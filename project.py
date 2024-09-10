@@ -1,8 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
-from PIL import ImageTk,Image
+# from PIL import ImageTk,Image
 window = Tk()
-window.title("Europe Hotel ")
+window.title("Hotel Bron By eLmIn")
 window.geometry("1500x1000+10+10")
 window.option_add("*tearOff", FALSE)
 
@@ -30,7 +30,7 @@ def Sign_in_frame():
                 for user in account:
                     proverka = gmail_get + ":" + password_get + "\n"
                     if proverka in user:
-                        finish_frame()
+                        finish_frame(gmail_get,password_get)
                         estno = 1
                 if estno == 0:
                     messagebox.showerror("error", "ne pravilno vveli")
@@ -138,7 +138,7 @@ def admin():
         password_get = password_entry.get()
         print(f"{gmail_get}:{password_get}")
         if gmail_get == "elmin-admin" or password_get == "elmin2008":
-            finish_frame()
+            finish_frame(gmail_get,password_get)
         elif gmail_get == "" or password_get == "":
             messagebox.showerror(title="error", message="pustoooo")
         else:
@@ -321,7 +321,7 @@ def Sign_up():
 
 
 
-def finish_frame():
+def finish_frame(gmail,password):
     finish_frame = Frame(window, width=1500, height=900)
     finish_frame.place(x=0, y=0)
 
@@ -334,71 +334,83 @@ def finish_frame():
     Back.place(x=10,y=10)
 
     def korzinka():
-        korzina_frame()
+        korzina_frame(gmail,password)
 
     def buy1():
         with open("otel.txt", "a") as file1:
             with open("otel.txt", "r") as file:
                 account = file.read()
-                if "\nReview 7.6 - Хорошо\nPrice: 207 manat - За ночь\nHilton***" in account:
+                if "\nReview 7.6 - well \nPrice: 207 manat - one night\nHilton***" in account:
                     messagebox.showerror("error","Уже добавили")
                 else:
-                    file1.write("\nReview 7.6 - Хорошо\nPrice: 207 manat - За ночь\nHilton***")
+                    file1.write("\nReview 7.6 - well \nPrice: 207 manat - one night\nHilton***")
                     messagebox.showinfo("Added","Успешно добавлено")
 
     def buy2():
         with open("otel.txt", "a") as file1:
             with open("otel.txt", "r") as file:
                 account = file.read()
-                if "\nReview 8.5 - Очень Хорошо\nPrice: 244 manat - За ночь\nEurope***" in account:
+                if "\nReview 8.5 - Very well\nPrice: 244 manat - one night\nEurope***" in account:
                     messagebox.showerror("error", "Уже добавили")
                 else:
-                    file1.write("\nReview 8.5 - Очень Хорошо\nPrice: 244 manat - За ночь\nEurope***")
+                    file1.write("\nReview 8.5 - Very well\nPrice: 244 manat - one night\nEurope***")
                     messagebox.showinfo("Added", "Успешно добавлено")
 
     def buy3():
         with open("otel.txt", "a") as file1:
             with open("otel.txt", "r") as file:
                 account = file.read()
-                if "\nReview 6.9 - Достаточно хорошо\nPrice: 170 manat - За ночь\nThe Venetian***" in account:
+                if "\nReview 6.9 - Well enough\nPrice: 170 manat - one night\nThe Venetian***" in account:
                     messagebox.showerror("error", "Уже добавили")
                 else:
-                    file1.write("\nReview 6.9 - Достаточно хорошо\nPrice: 170 manat - За ночь\nThe Venetian***")
+                    file1.write("\nReview 6.9 - Well enough\nPrice: 170 manat - one night\nThe Venetian***")
                     messagebox.showinfo("Added", "Успешно добавлено")
 
     def buy4():
         with open("otel.txt", "a") as file1:
             with open("otel.txt", "r") as file:
                 account = file.read()
-                if "\nReview 8.2 - Очень Хорошо\nPrice: 228 manat - За ночь\nLas Vegas***" in account:
+                if "\nReview 8.2 - Very well\nPrice: 228 manat - one night\nLas Vegas***" in account:
                     messagebox.showerror("error", "Уже добавили")
                 else:
-                    file1.write("\nReview 8.2 - Очень Хорошо\nPrice: 228 manat - За ночь\nLas Vegas***")
+                    file1.write("\nReview 8.2 - Very well\nPrice: 228 manat - one night\nLas Vegas***")
                     messagebox.showinfo("Added", "Успешно добавлено")
+
+    def buy5():
+        with open("otel.txt", "a") as file1:
+            with open("otel.txt", "r") as file:
+                account = file.read()
+                if "\nReview:9\nPrice:300 manat\nDubai\n" in account:
+                    messagebox.showerror("error", "Уже добавили")
+                else:
+                    file1.write("\nReview:9\nPrice:300 manat\nDubai\n")
+                    messagebox.showinfo("Added", "Успешно добавлено")
+
+
 
     frame1=Frame(finish_frame,bg="white",width=250,height=150,highlightbackground="black",highlightthickness=1)
     frame1.place(x=300,y=150)
-    review1 = Label(frame1, text="Review 7.6 - Хорошо ",bg="white")
+    review1 = Label(frame1, text="Review 7.6 ",bg="white")
     review1.config(fg="black", font="bold")
-    review1.place(x=10, y=10)
+    review1.place(x=70, y=10)
     buy1 = Button(frame1, text="Buy", fg="white", command=buy1)
     buy1.config(font="bold", bg="blue")
     buy1.place(x=10, y=100)
-    price1 = Label(frame1, text="Price: 207 manat - За ночь",bg="white")
+    price1 = Label(frame1, text="Price: 207 manat",bg="white")
     price1.config(fg="black", font="bold")
-    price1.place(x=10, y=50)
+    price1.place(x=50, y=50)
     label1 = Label(frame1, text="Hilton***",bg="white")
     label1.config(fg="black", font=("bold underline",15))
     label1.place(x=160, y=110)
 
     frame2 = Frame(finish_frame, bg="white", width=250, height=150, highlightbackground="black", highlightthickness=1)
     frame2.place(x=650, y=150)
-    review2 = Label(frame2, text="Review 8.5 - Очень Хорошо",bg="white")
+    review2 = Label(frame2, text="Review 8.5 ",bg="white")
     review2.config(fg="black", font="bold")
-    review2.place(x=10, y=10)
-    price2 = Label(frame2, text="Price: 244 manat - За ночь",bg="white")
+    review2.place(x=70, y=10)
+    price2 = Label(frame2, text="Price: 244 manat",bg="white")
     price2.config(fg="black", font="bold")
-    price2.place(x=10, y=50)
+    price2.place(x=50, y=50)
     buy2 = Button(frame2, text="Buy", fg="white",command=buy2)
     buy2.config(font="bold", bg="blue")
     buy2.place(x=10, y=100)
@@ -408,12 +420,12 @@ def finish_frame():
 
     frame3 = Frame(finish_frame, bg="white", width=250, height=150, highlightbackground="black", highlightthickness=1)
     frame3.place(x=1000, y=150)
-    review2 = Label(frame3, text="Review 6.9-Достаточно хорошо",bg="white")
+    review2 = Label(frame3, text="Review 6.9",bg="white")
     review2.config(fg="black", font="bold")
-    review2.place(x=10, y=10)
-    price2 = Label(frame3, text="Price: 170 manat - За ночь", bg="white")
+    review2.place(x=70, y=10)
+    price2 = Label(frame3, text="Price: 170 manat", bg="white")
     price2.config(fg="black", font="bold")
-    price2.place(x=10, y=50)
+    price2.place(x=50, y=50)
     buy2 = Button(frame3, text="Buy", fg="white", command=buy3)
     buy2.config(font="bold", bg="blue")
     buy2.place(x=10, y=100)
@@ -425,12 +437,12 @@ def finish_frame():
 
     frame4 = Frame(finish_frame, bg="white", width=250, height=150, highlightbackground="black", highlightthickness=1)
     frame4.place(x=300, y=400)
-    review2 = Label(frame4, text="Review 8.2 - Очень Хорошо",bg="white")
+    review2 = Label(frame4, text="Review 8.2",bg="white")
     review2.config(fg="black", font="bold")
-    review2.place(x=10, y=10)
-    price2 = Label(frame4, text="Price: 228 manat - За ночь", bg="white")
+    review2.place(x=70, y=10)
+    price2 = Label(frame4, text="Price: 228 manat", bg="white")
     price2.config(fg="black", font="bold")
-    price2.place(x=10, y=50)
+    price2.place(x=50, y=50)
     buy2 = Button(frame4, text="Buy", fg="white", command=buy4)
     buy2.config(font="bold", bg="blue")
     buy2.place(x=10, y=100)
@@ -438,16 +450,32 @@ def finish_frame():
     label2.config(fg="black", font=("bold underline", 15))
     label2.place(x=120, y=110)
 
+    frame5 = Frame(finish_frame, bg="white", width=250, height=150, highlightbackground="black", highlightthickness=1)
+    frame5.place(x=650, y=400)
+    review2 = Label(frame5, text="Review:9", bg="white")
+    review2.config(fg="black", font="bold")
+    review2.place(x=10, y=10)
+    price2 = Label(frame5, text="Price:300 manat", bg="white")
+    price2.config(fg="black", font="bold")
+    price2.place(x=10, y=50)
+    buy2 = Button(frame5, text="Buy", fg="white", command=buy5)
+    buy2.config(font="bold", bg="blue")
+    buy2.place(x=10, y=100)
+    label2 = Label(frame5, text="Dubai", bg="white")
+    label2.config(fg="black", font=("bold underline", 15))
+    label2.place(x=100, y=110)
 
 
     korzina = Button(finish_frame, text="ticket", command=korzinka)
     korzina.config(fg="white", bg="blue", font="bold", height=1)
     korzina.place(x=10, y=250)
 
-
-    add_button = Button(finish_frame,text="Add",command=Add_frame)
-    add_button.config(fg="white",bg="brown")
-    add_button.place(x=10,y=100)
+    with open("account.txt","r")as file:
+        remember=file.read()
+        if f"{gmail}:{password}" not in remember:
+            add_button = Button(finish_frame,text="Add",command=Add_frame)
+            add_button.config(fg="white",bg="brown")
+            add_button.place(x=10,y=100)
 
 
 
@@ -458,8 +486,8 @@ def Star_frame2():
     def Back():
         Sign_in_frame()
 
-    def next():
-        finish_frame()
+    # def next():
+    #     finish_frame(gmail,password)
 
     # view
     back_button = Button(start_frame2, text="Back", command=Back)
@@ -481,68 +509,83 @@ def Star_frame2():
 Sign_in_frame()
 
 
-def korzina_frame():
+def korzina_frame(gmail,password):
     korzina_frame = Frame(window, width=1500, height=900)
     korzina_frame.place(x=0, y=0)
     with open("otel.txt","a") as file:
         with open("otel.txt","r")as file2:
             read=file2.read()
-            if "\nReview 7.6 - Хорошо\nPrice: 207 manat - За ночь\nHilton***" in read:
+            if "\nReview 7.6 - well \nPrice: 207 manat - one night\nHilton***" in read:
                 frame1 = Frame(korzina_frame, bg="white", width=250, height=150, highlightbackground="black",
                                highlightthickness=1)
                 frame1.place(x=300, y=150)
-                review1 = Label(frame1, text="Review 7.6 - Хорошо ", bg="white")
+                review1 = Label(frame1, text="Review 7.6 ", bg="white")
                 review1.config(fg="black", font="bold")
-                review1.place(x=10, y=10)
-                price1 = Label(frame1, text="Price: 207 manat - За ночь", bg="white")
+                review1.place(x=70, y=10)
+                price1 = Label(frame1, text="Price: 207 manat", bg="white")
                 price1.config(fg="black", font="bold")
-                price1.place(x=10, y=50)
+                price1.place(x=50, y=50)
                 label1 = Label(frame1, text="Hilton***", bg="white")
                 label1.config(fg="black", font=("bold underline", 15))
                 label1.place(x=160, y=110)
-            if "\nReview 8.5 - Очень Хорошо\nPrice: 244 manat - За ночь\nEurope***" in read:
+            if "\nReview 8.5 - Very well\nPrice: 244 manat - one night\nEurope***" in read:
                 frame2 = Frame(korzina_frame, bg="white", width=250, height=150, highlightbackground="black",
                                highlightthickness=1)
                 frame2.place(x=650, y=150)
-                review2 = Label(frame2, text="Review 8.5 - Очень Хорошо", bg="white")
+                review2 = Label(frame2, text="Review 8.5 ", bg="white")
                 review2.config(fg="black", font="bold")
-                review2.place(x=10, y=10)
-                price2 = Label(frame2, text="Price: 244 manat - За ночь", bg="white")
+                review2.place(x=70, y=10)
+                price2 = Label(frame2, text="Price: 244 manat", bg="white")
                 price2.config(fg="black", font="bold")
-                price2.place(x=10, y=50)
+                price2.place(x=50, y=50)
                 label2 = Label(frame2, text="Europe***", bg="white")
                 label2.config(fg="black", font=("bold underline", 15))
                 label2.place(x=150, y=110)
-            if "\nReview 6.9 - Достаточно хорошо\nPrice: 170 manat - За ночь\nThe Venetian***" in read:
+            if "\nReview 6.9 - Well enough\nPrice: 170 manat - one night\nThe Venetian***" in read:
                 frame3 = Frame(korzina_frame, bg="white", width=250, height=150, highlightbackground="black",
                                highlightthickness=1)
                 frame3.place(x=1000, y=150)
-                review2 = Label(frame3, text="Review 6.9-Достаточно хорошо", bg="white")
+                review2 = Label(frame3, text="Review 6.9", bg="white")
                 review2.config(fg="black", font="bold")
-                review2.place(x=10, y=10)
-                price2 = Label(frame3, text="Price: 170 manat - За ночь", bg="white")
+                review2.place(x=70, y=10)
+                price2 = Label(frame3, text="Price: 170 manat", bg="white")
                 price2.config(fg="black", font="bold")
-                price2.place(x=10, y=50)
+                price2.place(x=50, y=50)
                 label2 = Label(frame3, text="The Venetian***", bg="white")
                 label2.config(fg="black", font=("bold underline", 15))
                 label2.place(x=100, y=110)
-            if "\nReview 8.2 - Очень Хорошо\nPrice: 228 manat - За ночь\nLas Vegas***" in read:
+            if "\nReview 8.2 - Very well\nPrice: 228 manat - one night\nLas Vegas***" in read:
                 frame4 = Frame(korzina_frame, bg="white", width=250, height=150, highlightbackground="black",
                                highlightthickness=1)
                 frame4.place(x=300, y=400)
-                review2 = Label(frame4, text="Review 8.2 - Очень Хорошо", bg="white")
+                review2 = Label(frame4, text="Review 8.2", bg="white")
                 review2.config(fg="black", font="bold")
-                review2.place(x=10, y=10)
-                price2 = Label(frame4, text="Price: 228 manat - За ночь", bg="white")
+                review2.place(x=70, y=10)
+                price2 = Label(frame4, text="Price: 228 manat", bg="white")
                 price2.config(fg="black", font="bold")
-                price2.place(x=10, y=50)
+                price2.place(x=50, y=50)
                 label2 = Label(frame4, text="Las Vegas***", bg="white")
                 label2.config(fg="black", font=("bold underline", 15))
                 label2.place(x=120, y=110)
+            if "\nReview:9\nPrice:300 manat\nDubai\n" in read:
+                frame5 = Frame(korzina_frame, bg="white", width=250, height=150, highlightbackground="black",
+                               highlightthickness=1)
+                frame5.place(x=650, y=400)
+                review2 = Label(frame5, text="Review:9", bg="white")
+                review2.config(fg="black", font="bold")
+                review2.place(x=10, y=10)
+                price2 = Label(frame5, text="Price:300 manat", bg="white")
+                price2.config(fg="black", font="bold")
+                price2.place(x=10, y=50)
+
+                label2 = Label(frame5, text="Dubai", bg="white")
+                label2.config(fg="black", font=("bold underline", 15))
+                label2.place(x=100, y=110)
 
 
-    def back():
-        finish_frame()
+        def back():
+            finish_frame(gmail,password)
+
     back = Button(korzina_frame,text="Back",command=back)
     back.config(fg="white",bg="brown",font="bold",height=3)
     back.place(x=10,y=10)
@@ -553,7 +596,7 @@ def Add_frame():
     Add_frame.place(x=0, y=0)
 
     def back1():
-        finish_frame()
+        finish_frame(gmail="elmin-admin",password="elmin2008")
     back = Button(Add_frame,text="Back",command=back1)
     back.config(fg="white",bg="brown",font="bold",height=3)
     back.place(x=10,y=10)
@@ -565,8 +608,14 @@ def Add_frame():
         if name_get == "" or review_get == "" or price_get == "":
             messagebox.showerror("error", "pustoo")
         else:
-            with open("account.txt", "a") as file:
-                file.write(f"{name_get}:{review_get}:{price_get}")
+            with open("otel.txt", "a") as file:
+                with open("otel.txt", "r") as file1:
+                    remember=file1.read()
+                    if f"\n{name_get}\n{review_get}\n{price_get}\n" in remember:
+                        messagebox.showerror("error","Такое уже есть")
+                    else:
+
+                        file.write(f"\n{name_get}\n{review_get}\n{price_get}\n")
             messagebox.showinfo(message="reqistraciya uspeshna")
             Sign_in_frame()
 
